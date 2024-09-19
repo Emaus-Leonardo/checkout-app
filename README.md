@@ -22,6 +22,8 @@ As principais bibliotecas e ferramentas usadas neste projeto incluem:
 
 - **PostCSS**: Usado junto com Tailwind para processar o CSS.
 - **Autoprefixer**: Usado com PostCSS para adicionar prefixos CSS automaticamente para compatibilidade com diferentes navegadores.
+- **React-icons**: Icons no geral
+- **React-spinners**: icones de Loading
 
 ## Pré-requisitos
 
