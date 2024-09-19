@@ -107,3 +107,7 @@ MY-CHECKOUT-APP/
 ├── tailwind.config.js
 └── README.md
 ```
+## Demo do Layout
+
+![checkoutApp-demo](https://github.com/user-attachments/assets/5d6b7ad7-379f-4b63-8334-b50cea313f1a)
+
