@@ -1,45 +1,107 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal Starter
-</h1>
+# MY-CHECKOUT-APP
 
-## 🚀 Quick start
+Este projeto é um sistema de checkout desenvolvido como parte de um teste técnico para uma vaga de estágio. Utilizando Gatsby e Tailwind CSS, o projeto implementa funcionalidades de pagamento com suporte para cartões de crédito e outros métodos de pagamento.
 
-1.  **Create a Gatsby site.**
+## Descrição do Projeto
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+O **MY-CHECKOUT-APP** é uma aplicação de checkout simples projetada para demonstrar habilidades de desenvolvimento e design. O sistema permite a seleção entre diferentes métodos de pagamento, valida a entrada de dados do usuário e exibe telas de carregamento e sucesso. O front-end é construído usando Gatsby para garantir um desempenho rápido e otimizado, enquanto o Tailwind CSS é usado para criar um design moderno e responsivo.
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## Tecnologias Utilizadas
 
-2.  **Start developing.**
+As principais bibliotecas e ferramentas usadas neste projeto incluem:
 
-    Navigate into your new site’s directory and start it up.
+- **Gatsby**: Framework baseado em React para construir sites estáticos.
+- **React**: Biblioteca JavaScript para criar interfaces de usuário.
+- **Tailwind CSS**: Framework CSS utilitário para estilizar os componentes.
+- **Zod**: Para validação de dados e schemas de formulários.
+- **React Router**: Gerenciamento de navegação no projeto.
+- **Prettier**: Ferramenta para formatação automática de código.
+- **ESLint**: Linting para JavaScript, com regras de acessibilidade (jsx-a11y).
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+### Outras dependências
 
-3.  **Open the code and start customizing!**
+- **PostCSS**: Usado junto com Tailwind para processar o CSS.
+- **Autoprefixer**: Usado com PostCSS para adicionar prefixos CSS automaticamente para compatibilidade com diferentes navegadores.
 
-    Your site is now running at http://localhost:8000!
+## Pré-requisitos
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+Para rodar este projeto, você precisará ter instalado em sua máquina:
 
-4.  **Learn more**
+- Node.js (>= 14.x)
+- npm ou yarn
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Instalação
 
+1. Clone este repositório:
 
+```bash
+git clone https://github.com/seu-usuario/my-checkout-app.git
+```
+
+2.Acesse o diretorio do projeto:
+
+```bash
+cd my-checkout-app
+```
+
+3.Instale as dependencias:
+
+```bash
+npm i
+```
+   
+Rodando o Projeto
+
+Para rodar o projeto em modo de desenvolvimento, use o comando:
+
+```bash
+npm run develop
+# ou
+yarn develop
+```
+
+O site estará disponível em http://localhost:8000.
+
+## Para fazer o build de produção:
+
+```bash
+npm run build
+# ou
+yarn build
+```
+
+## Estrutura de Pastas
+
+Aqui está a estrutura básica de pastas do projeto:
+
+```bash
+MY-CHECKOUT-APP/
+├── .cache/
+├── node_modules/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Footer.js
+│   │   ├── Header.js
+│   │   ├── Layout.js
+│   │   ├── Loading.jsx
+│   │   ├── LoadingScreen.js
+│   ├── images/
+│   │   ├── icon.png
+│   │   └── pagamentoImg.png
+│   ├── pages/
+│   │   ├── 404.jsx
+│   │   ├── Checkout.js
+│   │   ├── SolicitarValor.js
+│   │   └── sucesso.js
+│   ├── styles/
+│   │   └── global.css
+├── .gitignore
+├── gatsby-browser.js
+├── gatsby-config.js
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+└── README.md
+```
