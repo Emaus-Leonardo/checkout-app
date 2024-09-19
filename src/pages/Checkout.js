@@ -102,7 +102,7 @@ const Checkout = ({ location }) => {
 
       setTimeout(() => {
         navigate("/sucesso");
-      }, 2000);
+      }, 1000);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const formattedErrors = error.format();
