@@ -10,3 +10,5 @@ const LoadingScreen = () => (
       </div>
     </div>
   );
+
+export default LoadingScreen;
