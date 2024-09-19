@@ -44,6 +44,12 @@ git clone https://github.com/seu-usuario/my-checkout-app.git
 cd my-checkout-app
 ```
 
+3.Instale as dependencias:
+
+```bash
+npm i
+```
+   
 Rodando o Projeto
 
 Para rodar o projeto em modo de desenvolvimento, use o comando:
