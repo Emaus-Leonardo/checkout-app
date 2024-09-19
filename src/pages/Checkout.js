@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { navigate } from "gatsby";
-import pagamentoImg from "../images/pagamentoImg.png";
 import { z } from "zod";
 
-import Loading from "../components/Loading";
+import pagamentoImg from "../images/pagamentoImg.png";
+import LoadingScreen from "../components/LoadingScreen";
 
 const personalInfoSchema = z.object({
   nome: z.string().min(1, "Nome é obrigatório"),
@@ -27,16 +27,6 @@ const paymentInfoSchema = z.object({
     })
     .optional(),
 });
-
-const LoadingScreen = () => (
-  <div className="flex items-center justify-center h-screen">
-    <div className="text-center">
-      <div className="mt-4">
-        <Loading/>
-      </div>
-    </div>
-  </div>
-);
 
 const Checkout = ({ location }) => {
   const queryParams = new URLSearchParams(location.search);
@@ -79,6 +69,7 @@ const Checkout = ({ location }) => {
       personalInfoSchema.parse(formData);
       setErrors({});
       setStep(2);
+      
     } catch (error) {
       if (error instanceof z.ZodError) {
         const formattedErrors = error.format();
