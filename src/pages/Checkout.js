@@ -189,11 +189,6 @@ const Checkout = ({ location }) => {
                       <option value="boleto">Boleto</option>
                       <option value="pix">Pix</option>
                     </select>
-                    {errors.pagamento && (
-                      <span className="text-red-500 text-sm">
-                        {errors.pagamento._errors[0]}
-                      </span>
-                    )}
                   </div>
 
                   {formData.pagamento === "cartao" && (
