@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { IoIosArrowBack } from "react-icons/io";
 import { navigate } from "gatsby";
 import { z } from "zod";
 
@@ -69,7 +70,6 @@ const Checkout = ({ location }) => {
       personalInfoSchema.parse(formData);
       setErrors({});
       setStep(2);
-      
     } catch (error) {
       if (error instanceof z.ZodError) {
         const formattedErrors = error.format();
@@ -89,7 +89,7 @@ const Checkout = ({ location }) => {
 
       validationSchema.parse(formData);
       setErrors({});
-      setIsLoading(true); 
+      setIsLoading(true);
 
       setTimeout(() => {
         navigate("/sucesso");
@@ -103,263 +103,140 @@ const Checkout = ({ location }) => {
   };
 
   return (
-    <>
+    <div className="min-h-screen flex items-center justify-center p-4">
       {isLoading ? (
         <LoadingScreen />
       ) : (
-        <div className="flex items-center justify-center h-screen p-4">
-          <div className="flex max-w-[900px] w-full bg-white rounded-xl shadow-lg">
-            <div className="flex-1">
-              <img
-                src={pagamentoImg}
-                alt="imagem pagamento"
-                className="w-full h-full object-cover rounded-l-xl"
-              />
-            </div>
+        <div className="bg-white rounded-xl shadow-lg w-full max-w-3xl flex flex-col md:flex-row">
+          <div className="md:flex-1 hidden md:block">
+            <img
+              src={pagamentoImg}
+              alt="imagem pagamento"
+              className="w-full h-full object-cover rounded-t-xl md:rounded-l-xl"
+            />
+          </div>
 
-            <div className="flex-1 p-8">
-              {step === 1 && (
-                <div>
-                  <h1 className="text-2xl font-bold mb-4">Informações Pessoais</h1>
+          <div className="flex-1 p-4 md:p-8">
+            {step === 1 && (
+              <div>
+                <h1 className="text-2xl font-bold mb-4">
+                  Informações Pessoais
+                </h1>
 
-                  <form role="form" className="flex flex-col w-[400px]">
-                    <div className="flex flex-col">
-                      <label htmlFor="nome">Nome</label>
+                <form role="form" className="flex flex-col gap-4">
+                  {["nome", "cpf", "email", "telefone", "endereco"].map((field) => (
+                    <div key={field} className="flex flex-col">
+                      <label htmlFor={field} className="mb-1 capitalize">
+                        {field}
+                      </label>
                       <input
-                        type="text"
-                        name="nome"
-                        className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                          errors.nome ? "border-red-500" : "border-gray-300"
+                        type={field === "email" ? "email" : "text"}
+                        name={field}
+                        id={field}
+                        className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
+                          errors[field] ? "border-red-500" : "border-gray-300"
                         }`}
-                        placeholder="Digite o Nome Completo"
-                        value={formData.nome}
+                        placeholder={`Digite seu ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+                        value={formData[field]}
                         onChange={handleChange}
                       />
-                      {errors.nome && (
+                      {errors[field] && (
                         <span className="text-red-500 text-sm">
-                          {errors.nome._errors[0]}
+                          {errors[field]._errors[0]}
                         </span>
                       )}
                     </div>
+                  ))}
 
-                    <div className="flex flex-col">
-                      <label htmlFor="cpf">CPF</label>
-                      <input
-                        type="text"
-                        name="cpf"
-                        className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                          errors.cpf ? "border-red-500" : "border-gray-300"
-                        }`}
-                        placeholder="Digite o CPF"
-                        value={formData.cpf}
-                        onChange={handleChange}
-                      />
-                      {errors.cpf && (
-                        <span className="text-red-500 text-sm">
-                          {errors.cpf._errors[0]}
-                        </span>
-                      )}
-                    </div>
+                  <button
+                    onClick={handleNextStep}
+                    className="bg-blue-600 border border-blue-600 text-white py-2 px-4 w-full font-medium rounded-md hover:bg-transparent hover:text-blue-600 transition-all duration-200"
+                  >
+                    Próximo
+                  </button>
+                </form>
+              </div>
+            )}
 
-                    <div className="flex flex-col">
-                      <label htmlFor="email">Email</label>
-                      <input
-                        type="email"
-                        name="email"
-                        className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                          errors.email ? "border-red-500" : "border-gray-300"
-                        }`}
-                        placeholder="Digite seu Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
-                      {errors?.email && (
-                        <span className="text-red-600">
-                          {errors.email._errors[0]}
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="flex flex-col">
-                      <label htmlFor="telefone">Telefone</label>
-                      <input
-                        type="text"
-                        name="telefone"
-                        className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                          errors.telefone ? "border-red-500" : "border-gray-300"
-                        }`}
-                        placeholder="Digite seu Telefone"
-                        value={formData.telefone}
-                        onChange={handleChange}
-                      />
-                      {errors?.telefone && (
-                        <span className="text-red-600">
-                          {errors.telefone._errors[0]}
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="flex flex-col">
-                      <label htmlFor="endereco">Endereço</label>
-                      <input
-                        type="text"
-                        name="endereco"
-                        className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                          errors.endereco ? "border-red-500" : "border-gray-300"
-                        }`}
-                        placeholder="Digite o Endereço"
-                        value={formData.endereco}
-                        onChange={handleChange}
-                      />
-                      {errors?.endereco && (
-                        <span className="text-red-600">
-                          {errors.endereco._errors[0]}
-                        </span>
-                      )}
-                    </div>
-
-                    <button
-                      onClick={handleNextStep}
-                      className="mt-3 bg-blue-600 border border-blue-600 text-white py-2 px-4 w-full font-medium rounded-md hover:bg-transparent hover:text-blue-600 transition-all duration-200"
-                    >
-                      Próximo
-                    </button>
-                  </form>
-                </div>
-              )}
-
-              {step === 2 && (
-                <div>
-                  <div className="flex justify-between items-center">
-                    <div
-                      className="order-1 mb-4 cursor-pointer"
-                      onClick={() => setStep(1)}
-                    >
-                      <p className="text-blue-600 underline">Voltar</p>
-                    </div>
-
-                    <h1 className="text-2xl font-bold mb-4">
-                      Pagamento - Valor: R${valor}
-                    </h1>
+            {step === 2 && (
+              <div>
+                <div className="flex justify-between items-center mb-4">
+                  <div
+                    className="cursor-pointer order-1 p-1 hover:bg-slate-200 rounded-full transition duration-200 ease-in-out"
+                    onClick={() => setStep(1)}
+                  >
+                    <IoIosArrowBack size={25} color="black"/>
                   </div>
 
-                  <form role="form" className="flex flex-col gap-1 w-[400px]">
-                    <div className="flex flex-col">
-                      <label className="block mb-2">Forma de Pagamento:</label>
-                      <select
-                        name="pagamento"
-                        className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                          errors.pagamento ? "border-red-500" : "border-gray-300"
-                        }`}
-                        value={formData.pagamento}
-                        onChange={handleChange}
-                      >
-                        <option value="">Selecione</option>
-                        <option value="cartao">Cartão</option>
-                        <option value="boleto">Boleto</option>
-                        <option value="pix">Pix</option>
-                      </select>
-                      {errors.pagamento && (
-                        <span className="text-red-500 text-sm">
-                          {errors.pagamento._errors[0]}
-                        </span>
-                      )}
-                    </div>
-
-                    {formData.pagamento === "cartao" && (
-                      <>
-                        <div className="flex flex-col">
-                          <label htmlFor="numero">Número do Cartão</label>
-                          <input
-                            type="text"
-                            name="cartao.numero"
-                            className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                              errors.cartao?.numero ? "border-red-500" : "border-gray-300"
-                            }`}
-                            placeholder="Digite o Número do Cartão"
-                            value={formData.cartao.numero}
-                            onChange={handleChange}
-                          />
-                          {errors.cartao?.numero && (
-                            <span className="text-red-500 text-sm">
-                              {errors.cartao.numero._errors[0]}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="flex flex-col">
-                          <label htmlFor="titular">Nome do Titular</label>
-                          <input
-                            type="text"
-                            name="cartao.titular"
-                            className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                              errors.cartao?.titular ? "border-red-500" : "border-gray-300"
-                            }`}
-                            placeholder="Digite o Nome do Titular"
-                            value={formData.cartao.titular}
-                            onChange={handleChange}
-                          />
-                          {errors.cartao?.titular && (
-                            <span className="text-red-500 text-sm">
-                              {errors.cartao.titular._errors[0]}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="flex flex-col">
-                          <label htmlFor="vencimento">Data de Vencimento</label>
-                          <input
-                            type="date"
-                            name="cartao.vencimento"
-                            className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                              errors.cartao?.vencimento ? "border-red-500" : "border-gray-300"
-                            }`}
-                            placeholder="MM/AA"
-                            value={formData.cartao.vencimento}
-                            onChange={handleChange}
-                          />
-                          {errors.cartao?.vencimento && (
-                            <span className="text-red-500 text-sm">
-                              {errors.cartao.vencimento._errors[0]}
-                            </span>
-                          )}
-                        </div>
-
-                        <div className="flex flex-col">
-                          <label htmlFor="cvv">CVV</label>
-                          <input
-                            type="text"
-                            name="cartao.cvv"
-                            className={`border p-2 w-full mb-2 outline-none rounded-md bg-slate-50 ${
-                              errors.cartao?.cvv ? "border-red-500" : "border-gray-300"
-                            }`}
-                            placeholder="Digite o CVV"
-                            value={formData.cartao.cvv}
-                            onChange={handleChange}
-                          />
-                          {errors.cartao?.cvv && (
-                            <span className="text-red-500 text-sm">
-                              {errors.cartao.cvv._errors[0]}
-                            </span>
-                          )}
-                        </div>
-                      </>
-                    )}
-
-                    <button
-                      onClick={handleSubmit}
-                      className="bg-emerald-500 border border-emerald-500 text-white py-2 px-4 w-full font-medium rounded-md hover:bg-transparent hover:text-emerald-500 transition-all duration-200"
-                    >
-                      Finalizar Compra
-                    </button>
-                  </form>
+                  <h1 className="text-2xl font-bold ">
+                    Pagamento - Valor: R${valor}
+                  </h1>
                 </div>
-              )}
-            </div>
+
+                <form role="form" className="flex flex-col gap-4">
+                  <div className="flex flex-col">
+                    <label className="block mb-2">Forma de Pagamento:</label>
+                    <select
+                      name="pagamento"
+                      className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
+                        errors.pagamento ? "border-red-500" : "border-gray-300"
+                      }`}
+                      value={formData.pagamento}
+                      onChange={handleChange}
+                    >
+                      <option value="">Selecione</option>
+                      <option value="cartao">Cartão</option>
+                      <option value="boleto">Boleto</option>
+                      <option value="pix">Pix</option>
+                    </select>
+                    {errors.pagamento && (
+                      <span className="text-red-500 text-sm">
+                        {errors.pagamento._errors[0]}
+                      </span>
+                    )}
+                  </div>
+
+                  {formData.pagamento === "cartao" && (
+                    <>
+                      {["numero", "titular", "vencimento", "cvv"].map((field) => (
+                        <div key={field} className="flex flex-col">
+                          <label htmlFor={`cartao.${field}`} className="mb-1 capitalize">
+                            {field.charAt(0).toUpperCase() + field.slice(1)}
+                          </label>
+                          <input
+                            type={field === "vencimento" ? "date" : "text"}
+                            name={`cartao.${field}`}
+                            id={`cartao.${field}`}
+                            className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
+                              errors.cartao?.[field] ? "border-red-500" : "border-gray-300"
+                            }`}
+                            placeholder={`Digite ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+                            value={formData.cartao[field]}
+                            onChange={handleChange}
+                          />
+                          {errors.cartao?.[field] && (
+                            <span className="text-red-500 text-sm">
+                              {errors.cartao[field]._errors[0]}
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </>
+                  )}
+
+                  <button
+                    onClick={handleSubmit}
+                    className="bg-emerald-500 border border-emerald-500 text-white py-2 px-4 w-full font-medium rounded-md hover:bg-transparent hover:text-emerald-500 transition-all duration-200"
+                  >
+                    Finalizar Compra
+                  </button>
+                </form>
+              </div>
+            )}
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
