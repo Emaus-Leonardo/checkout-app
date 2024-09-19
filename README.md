@@ -2,15 +2,6 @@
 
 Este é um projeto de checkout desenvolvido utilizando **Gatsby** e **Tailwind CSS**, que implementa funcionalidades de pagamento com a possibilidade de utilizar cartão de crédito ou outros métodos de pagamento. 
 
-## Índice
-
-- [Descrição do Projeto](#descrição-do-projeto)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Pré-requisitos](#pré-requisitos)
-- [Instalação](#instalação)
-- [Rodando o Projeto](#rodando-o-projeto)
-- [Estrutura de Pastas](#estrutura-de-pastas)
-
 ## Descrição do Projeto
 
 O **MY-CHECKOUT-APP** é um sistema simples de checkout que permite o pagamento por diferentes métodos, com validação de dados e exibição de telas de carregamento e sucesso. O projeto foi estilizado usando **Tailwind CSS**, e utiliza **Gatsby** para gerar um front-end rápido e otimizado.
