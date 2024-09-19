@@ -31,8 +31,6 @@ const paymentInfoSchema = z.object({
 const LoadingScreen = () => (
   <div className="flex items-center justify-center h-screen">
     <div className="text-center">
-      <p className="text-lg font-semibold">Finalizando Compra...</p>
-
       <div className="mt-4">
         <Loading/>
       </div>
