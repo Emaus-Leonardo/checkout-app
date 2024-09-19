@@ -11,13 +11,13 @@ const Header = () => {
         <nav>
           <ul className="flex space-x-4">
             <li>
-              <Link to="/home" className="font-medium hover:underline">Home</Link>
-            </li>
-            <li>
-              <Link to="/about" className="font-medium hover:underline">Sobre</Link>
+              <Link  className="font-medium hover:underline cursor-pointer">Home</Link>
             </li>
             <li>
               <Link to="/SolicitarValor" className=" font-medium hover:underline">Solicitar Valor</Link>
+            </li>
+            <li>
+              <Link className="font-medium hover:underline cursor-pointer">Sobre</Link>
             </li>
           </ul>
         </nav>
