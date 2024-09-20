@@ -37,7 +37,7 @@ Para rodar este projeto, você precisará ter instalado em sua máquina:
 1. Clone este repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/my-checkout-app.git
+https://github.com/Emaus-Leonardo/my-checkout-app.git
 ```
 
 2.Acesse o diretorio do projeto:
