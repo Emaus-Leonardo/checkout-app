@@ -49,7 +49,7 @@ cd my-checkout-app
 3.Instale as dependencias:
 
 ```bash
-npm i
+npm install
 ```
    
 Rodando o Projeto
