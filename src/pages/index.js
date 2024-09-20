@@ -15,7 +15,7 @@ const SolicitarValor = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="container mx-auto flex justify-center items-center h-screen px-4">
       <div className="bg-white p-8 rounded-md shadow-lg w-96">
         <h1 className="text-2xl font-bold mb-4">Informe o Valor</h1>
         <input

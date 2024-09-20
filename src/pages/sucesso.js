@@ -3,7 +3,7 @@ import { navigate } from "gatsby";
 
 const Sucesso = () => {
   return (
-    <div className="flex items-center justify-center h-screen ">
+    <div className="container mx-auto flex justify-center items-center h-screen px-4">
       <div className="bg-white p-8 rounded shadow-md w-96 text-center">
         <h1 className="text-2xl font-bold mb-4">Compra realizada com sucesso!</h1>
         <p className="mb-4">Obrigado pela sua compra.</p>
