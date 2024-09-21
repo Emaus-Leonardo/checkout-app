@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
+import InputMask from "react-input-mask";
 import { navigate } from "gatsby";
 import { z } from "zod";
 
@@ -112,16 +113,14 @@ const Checkout = ({ location }) => {
             <img
               src={pagamentoImg}
               alt="imagem pagamento"
-              className="w-full h-full object-cover rounded-t-xl md:rounded-l-xl"
+              className="w-full h-full object-cover md:rounded-l-xl"
             />
           </div>
 
           <div className="flex-1 p-4 md:p-8">
             {step === 1 && (
               <div>
-                <h1 className="text-2xl font-bold mb-4">
-                  Informações Pessoais
-                </h1>
+                <h1 className="text-2xl font-bold mb-4">Informações Pessoais</h1>
 
                 <form role="form" className="flex flex-col gap-4">
                   {["nome", "cpf", "email", "telefone", "endereco"].map((field) => (
@@ -129,17 +128,57 @@ const Checkout = ({ location }) => {
                       <label htmlFor={field} className="mb-1 capitalize">
                         {field}
                       </label>
-                      <input
-                        type={field === "email" ? "email" : "text"}
-                        name={field}
-                        id={field}
-                        className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
-                          errors[field] ? "border-red-500" : "border-gray-300"
-                        }`}
-                        placeholder={`Digite seu ${field.charAt(0).toUpperCase() + field.slice(1)}`}
-                        value={formData[field]}
-                        onChange={handleChange}
-                      />
+                      {field === "cpf" ? (
+                        <InputMask
+                          mask="999.999.999-99"
+                          value={formData.cpf}
+                          onChange={handleChange}
+                        >
+                          {() => (
+                            <input
+                              type="text"
+                              name={field}
+                              id={field}
+                              className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
+                                errors[field] ? "border-red-500" : "border-gray-300"
+                              }`}
+                              placeholder="Digite seu CPF"
+                            />
+                          )}
+                        </InputMask>
+                      ) : field === "telefone" ? (
+                        <InputMask
+                          mask="(99) 99999-9999"
+                          value={formData.telefone}
+                          onChange={handleChange}
+                        >
+                          {() => (
+                            <input
+                              type="text"
+                              name={field}
+                              id={field}
+                              className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
+                                errors[field] ? "border-red-500" : "border-gray-300"
+                              }`}
+                              placeholder="Digite seu Telefone"
+                            />
+                          )}
+                        </InputMask>
+                      ) : (
+                        <input
+                          type={field === "email" ? "email" : "text"}
+                          name={field}
+                          id={field}
+                          className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
+                            errors[field] ? "border-red-500" : "border-gray-300"
+                          }`}
+                          placeholder={`Digite seu ${
+                            field.charAt(0).toUpperCase() + field.slice(1)
+                          }`}
+                          value={formData[field]}
+                          onChange={handleChange}
+                        />
+                      )}
                       {errors[field] && (
                         <span className="text-red-500 text-sm">
                           {errors[field]._errors[0]}
@@ -165,12 +204,10 @@ const Checkout = ({ location }) => {
                     className="cursor-pointer order-1 p-1 hover:bg-slate-200 rounded-full transition duration-200 ease-in-out"
                     onClick={() => setStep(1)}
                   >
-                    <IoIosArrowBack size={25} color="black"/>
+                    <IoIosArrowBack size={25} color="black" />
                   </div>
 
-                  <h1 className="text-2xl font-bold ">
-                    Pagamento - Valor: R${valor}
-                  </h1>
+                  <h1 className="text-2xl font-bold ">Pagamento - Valor: R${valor}</h1>
                 </div>
 
                 <form role="form" className="flex flex-col gap-4">
@@ -198,17 +235,39 @@ const Checkout = ({ location }) => {
                           <label htmlFor={`cartao.${field}`} className="mb-1 capitalize">
                             {field.charAt(0).toUpperCase() + field.slice(1)}
                           </label>
-                          <input
-                            type={field === "vencimento" ? "date" : "text"}
-                            name={`cartao.${field}`}
-                            id={`cartao.${field}`}
-                            className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
-                              errors.cartao?.[field] ? "border-red-500" : "border-gray-300"
-                            }`}
-                            placeholder={`Digite ${field.charAt(0).toUpperCase() + field.slice(1)}`}
-                            value={formData.cartao[field]}
-                            onChange={handleChange}
-                          />
+                          {field === "numero" ? (
+                            <InputMask
+                              mask="9999 9999 9999 9999"
+                              value={formData.cartao[field]}
+                              onChange={handleChange}
+                            >
+                              {() => (
+                                <input
+                                  type="text"
+                                  name={`cartao.${field}`}
+                                  id={`cartao.${field}`}
+                                  className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
+                                    errors.cartao?.[field]
+                                      ? "border-red-500"
+                                      : "border-gray-300"
+                                  }`}
+                                  placeholder={`Digite ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+                                />
+                              )}
+                            </InputMask>
+                          ) : (
+                            <input
+                              type={field === "vencimento" ? "date" : "text"}
+                              name={`cartao.${field}`}
+                              id={`cartao.${field}`}
+                              className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
+                                errors.cartao?.[field] ? "border-red-500" : "border-gray-300"
+                              }`}
+                              placeholder={`Digite ${field.charAt(0).toUpperCase() + field.slice(1)}`}
+                              value={formData.cartao[field]}
+                              onChange={handleChange}
+                            />
+                          )}
                           {errors.cartao?.[field] && (
                             <span className="text-red-500 text-sm">
                               {errors.cartao[field]._errors[0]}

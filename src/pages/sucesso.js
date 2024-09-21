@@ -9,7 +9,7 @@ const Sucesso = () => {
         <p className="mb-4">Obrigado pela sua compra.</p>
         <button
           onClick={() => navigate("/")}
-          className="bg-blue-500 text-white py-2 px-4 w-full rounded hover:bg-blue-600"
+          className="bg-blue-600 border border-blue-600 text-white py-2 px-4 w-full font-medium rounded-md hover:bg-transparent hover:text-blue-600 transition-all duration-200"
         >
           Voltar ao Início
         </button>
