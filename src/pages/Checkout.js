@@ -67,7 +67,7 @@ const MaskedInputField = ({label, name, mask, value, onChange, error, placeholde
 // Informações Pessoas Form
 const PersonalInfoForm = ({formData, handleChange, handleNextStep, errors,}) => (
   <div>
-    <h1 className="text-2xl font-bold mb-4">Informações Pessoais</h1>
+    <h1 className="text-xl font-bold mb-4">Informações Pessoais</h1>
     <form role="form" className="flex flex-col gap-4">
       <InputField
         label="Nome"
@@ -135,7 +135,7 @@ const PaymentInfoForm = ({formData, handleChange, handleSubmit, errors, valor, s
       >
         <IoIosArrowBack size={25} color="black" />
       </div>
-      <h1 className="text-2xl font-bold">Pagamento - Valor: R${valor}</h1>
+      <h1 className="text-xl font-bold">Pagamento - Valor: R${valor}</h1>
     </div>
 
     <form role="form" className="flex flex-col gap-4">
