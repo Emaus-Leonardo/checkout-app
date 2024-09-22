@@ -106,6 +106,7 @@ MY-CHECKOUT-APP/
 ├── postcss.config.js
 ├── tailwind.config.js
 └── README.md
+
 ```
 ## Demo do Layout
 
