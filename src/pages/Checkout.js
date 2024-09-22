@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
-import InputMask from "react-input-mask"
+import InputMask from "react-input-mask";
 import { navigate } from "gatsby";
 import { z } from "zod";
 
@@ -41,8 +41,8 @@ const initialFormData = {
   cartao: { numero: "", titular: "", vencimento: "", cvv: "" },
 };
 
-// mascara dos inputs
-const MaskedInputField = ({label, name, mask, value, onChange, error, placeholder,}) => (
+// Mascara dos inputs
+const MaskedInputField = ({ label, name, mask, value, onChange, error, placeholder, }) => (
   <div className="flex flex-col">
     <label htmlFor={name} className="mb-1 capitalize">
       {label}
@@ -64,11 +64,11 @@ const MaskedInputField = ({label, name, mask, value, onChange, error, placeholde
   </div>
 );
 
-// Informações Pessoas Form
-const PersonalInfoForm = ({formData, handleChange, handleNextStep, errors,}) => (
+// Formulario de Informações Pessoais 
+const PersonalInfoForm = ({ formData, handleChange, handleNextStep, errors, }) => (
   <div>
     <h1 className="text-xl font-bold mb-4">Informações Pessoais</h1>
-    <form role="form" className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4">
       <InputField
         label="Nome"
         type="text"
@@ -124,24 +124,29 @@ const PersonalInfoForm = ({formData, handleChange, handleNextStep, errors,}) => 
   </div>
 );
 
-// Pagamento Form
-const PaymentInfoForm = ({formData, handleChange, handleSubmit, errors, valor, setStep,
-}) => (
+// Formulario de Pagamento
+const PaymentInfoForm = ({ formData, handleChange, handleSubmit, errors, valor, setStep,}) => (
   <div>
     <div className="flex justify-between items-center mb-4">
       <div
         className="cursor-pointer order-1 p-1 hover:bg-slate-200 rounded-full transition duration-200 ease-in-out"
         onClick={() => setStep(1)}
+        onKeyDown={(e) => e.key === "Enter" && setStep(1)}
+        tabIndex={0}
+        role="button"
       >
         <IoIosArrowBack size={25} color="black" />
       </div>
       <h1 className="text-xl font-bold">Pagamento - Valor: R${valor}</h1>
     </div>
 
-    <form role="form" className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4">
       <div className="flex flex-col">
-        <label className="block mb-2">Forma de Pagamento:</label>
+        <label htmlFor="pagamento" className="block mb-2">
+          Forma de Pagamento:
+        </label>
         <select
+          id="pagamento"
           name="pagamento"
           className={`border p-2 w-full outline-none rounded-md bg-slate-50 ${
             errors.pagamento ? "border-red-500" : "border-gray-300"
