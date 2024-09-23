@@ -85,6 +85,7 @@ MY-CHECKOUT-APP/
 │   ├── components/
 │   │   ├── Footer.js
 │   │   ├── Header.js
+│   │   ├── InputField.js
 │   │   ├── Layout.js
 │   │   ├── Loading.jsx
 │   │   ├── LoadingScreen.js
@@ -94,7 +95,7 @@ MY-CHECKOUT-APP/
 │   ├── pages/
 │   │   ├── 404.jsx
 │   │   ├── Checkout.js
-│   │   ├── SolicitarValor.js
+│   │   ├── index.js
 │   │   └── sucesso.js
 │   ├── styles/
 │   │   └── global.css
@@ -106,7 +107,6 @@ MY-CHECKOUT-APP/
 ├── postcss.config.js
 ├── tailwind.config.js
 └── README.md
-
 ```
 ## Demo do Layout
 
