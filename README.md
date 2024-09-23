@@ -110,5 +110,6 @@ MY-CHECKOUT-APP/
 ```
 ## Demo do Layout
 
-![checkoutApp-demo](https://github.com/user-attachments/assets/5d6b7ad7-379f-4b63-8334-b50cea313f1a)
+![checkoutApp-demo](https://github.com/user-attachments/assets/1b37f859-ba12-4989-bf5d-03d63248eb8b)
+
 
