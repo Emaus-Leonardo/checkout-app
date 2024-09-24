@@ -14,7 +14,6 @@ As principais bibliotecas e ferramentas usadas neste projeto incluem:
 - **React**: Biblioteca JavaScript para criar interfaces de usuário.
 - **Tailwind CSS**: Framework CSS utilitário para estilizar os componentes.
 - **Zod**: Para validação de dados e schemas de formulários.
-- **React Router**: Gerenciamento de navegação no projeto.
 - **Prettier**: Ferramenta para formatação automática de código.
 - **ESLint**: Linting para JavaScript, com regras de acessibilidade (jsx-a11y).
 
