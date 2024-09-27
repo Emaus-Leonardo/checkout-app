@@ -1,10 +1,10 @@
-# MY-CHECKOUT-APP
+# CHECKOUT-APP
 
 Este projeto é um sistema de checkout desenvolvido como parte de um teste técnico para uma vaga de estágio. Utilizando Gatsby e Tailwind CSS, o projeto implementa funcionalidades de pagamento com suporte para cartões de crédito e outros métodos de pagamento.
 
 ## Descrição do Projeto
 
-O **MY-CHECKOUT-APP** é uma aplicação de checkout simples projetada para demonstrar habilidades de desenvolvimento e design. O sistema permite a seleção entre diferentes métodos de pagamento, valida a entrada de dados do usuário e exibe telas de carregamento e sucesso. O front-end é construído usando Gatsby para garantir um desempenho rápido e otimizado, enquanto o Tailwind CSS é usado para criar um design moderno e responsivo.
+O **CHECKOUT-APP** é uma aplicação de checkout simples projetada para demonstrar habilidades de desenvolvimento e design. O sistema permite a seleção entre diferentes métodos de pagamento, valida a entrada de dados do usuário e exibe telas de carregamento e sucesso. O front-end é construído usando Gatsby para garantir um desempenho rápido e otimizado, enquanto o Tailwind CSS é usado para criar um design moderno e responsivo.
 
 ## Tecnologias Utilizadas
 
